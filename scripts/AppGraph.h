@@ -19,7 +19,7 @@
 
 class AppGraph {
  public:
-  TTree* ReadFile(std::string fname);
+  TTree* ReadFile(std::string fname, std::string tree);
   TFile* OutputFile(std::string fname);
   void Style();
   void LegendStyle(TH1* hist1d1, TH1* hist1d2, TH1* hist1d3);
