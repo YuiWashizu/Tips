@@ -1,0 +1,34 @@
+#ifndef _APPGRAPH_H_
+#define _APPGRAPH_H_
+
+#include "TTree.h"
+#include "TFile.h"
+#include "TH1.h"
+#include "TH2.h"
+#include "TCanvas.h"
+#include "TStyle.h"
+#include "TGraph.h"
+#include "TGraphError.h"
+#include <stdio.h>
+#include <string>
+#include <sstream>
+#include <fstream>
+#include <iostream>
+
+class AppGraph {
+ public:
+  TTree* ReadFile(std::string fname);
+  TFile* OutputFile(std::string fname);
+  void Style();
+  void Histo1D(TH1* histo1d, int x, int y, std::string fname, std::string format);
+  void Histo2D(TH2* histo2d, int x, int y, std::string fname, std::string format);
+ private:
+  TFile f;
+  TFile fout;
+  TTree t;
+  int linewd;
+  int fontid;
+};
+
+#endif //_APPGRAPH_H_
+	      
