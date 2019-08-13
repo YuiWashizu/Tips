@@ -1,8 +1,8 @@
 #include "AppGraph.h"
 
-TTree* AppGraph::ReadFile(std::string fname) { 
+TTree* AppGraph::ReadFile(std::string fname, std::string tree) { 
   TFile* f = TFile::Open(fname.c_str(), "READ");
-  TTree* t = dynamic_cast<TTree*>(f->Get("t"));
+  TTree* t = dynamic_cast<TTree*>(f->Get(tree.c_str()));
   return t;
 }
 
