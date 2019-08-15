@@ -18,21 +18,24 @@
 #include <iostream>
 
 class AppGraph {
- public:
-  TTree* ReadFile(std::string fname, std::string tree);
-  TFile* OutputFile(std::string fname);
-  void Style();
-  void LegendStyle(TH1* hist1d1, TH1* hist1d2, TH1* hist1d3);
-  void Histo1D(TH1* hist1d, int x, int y, std::string fname, std::string format);
-  void Histo2D(TH2* hist2d, int x, int y, std::string fname, std::string format);
-  void Histo1Dx2(TH1* hist1d1, TH1* hist1d2, int x, int y, std::string fname, std::string format);
-  void Histo1Dx3(TH1* hist1d1, TH1* hist1d2, TH1* hist1d3, int x, int y, std::string fname, std::string format);
  private:
   TFile f;
   TFile fout;
   TTree t;
   int linewd;
   int fontid;
+ public:
+  TTree* ReadFile(std::string fname, std::string tree);
+  TFile* OutputFile(std::string fname);
+  void Style();
+  void AddLegend(TH1* hist1d1);
+  TCanvas* Hist1d(TH1* hist1d, int x, int y);
+  void AddHist1d(TCanvas* c1, TH1* hist1d);
+  void AddStats(TCanvas* c1, TH1* hist1d, int i);
+  void AddText(std::string text, int color);
+  void SaveAs(TCanvas* c1, std::string fname, std::string format);
+  TCanvas* Hist2d(TH2* hist2d, int x, int y);
+  void Histo1Dx3(TH1* hist1d1, TH1* hist1d2, TH1* hist1d3, int x, int y, std::string fname, std::string format);
 };
 
 #endif //_APPGRAPH_H_
